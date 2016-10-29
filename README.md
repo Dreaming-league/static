@@ -1,4 +1,4 @@
-# static
+# 一、static
     基于node的页面实现
 ### 用于 https://github.com/Dreaming-league/mvc.git 项目，做为它的子模块引入，方便前端开发人员加入项目
 

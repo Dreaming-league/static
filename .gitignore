@@ -1,1 +1,4 @@
+## 不提交到git的文件
 static.iml
+.DS_Store
+.idea/

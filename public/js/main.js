@@ -7,12 +7,27 @@ requirejs.config({
     app:'../app'
   }
 })
-requirejs(['jquery','vue','app/sub'],function($,Vue,sub){
-  // jqery 2.1.4  bootstrap 3.3
-  // bootstrap 依赖jq
-  console.log($)
-  require(['bootstrap']);
-  console.log(sub);
-  var person = new sub();
-  person.sayHello('hello');
+requirejs(['jquery','vue','app/sub','semantic'],function($,Vue,sub){
+    $('.ui.rating').rating({
+      initialRating: 3,
+      maxRating: 5
+    })
+    // 导航栏的点击事件
+    /*$('.head a.item:not(:first)').on('click',function() {
+      $('a.item').removeClass('active');
+      $(this).addClass('active');
+      console.log($(this).attr('data-index'));
+      var index = $(this).attr('data-index');
+      $('#list li').eq(index).addClass('active').siblings('li').removeClass('active');
+    });
+    $('.sidebar a.item').on('click',function() {
+      var  index = $(this).index();
+      $('#list li').eq(index).addClass('active').siblings('li').removeClass('active');
+    });*/
+  // 侧边栏
+  $('.ui.sidebar').sidebar('attach events', '.toc.item');
+  // 用户hover下拉
+  $('#user').dropdown({
+    on: 'hover'
+  })
 })

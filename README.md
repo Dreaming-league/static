@@ -42,10 +42,10 @@
         5. 提交本地代码：1）git add .(把本地所有修改压入提交本地仓库的队列或逐个压入,后跟文件路径)
                        2) git commit -m "更新注释，提交说明 "(提交到本地git仓库)
                        3) git commit -a -m "更新注释，提交说明" (简化操作，作用同1、2)
-        6. 更新到线上develop分支：git push origin develop
-        7. 确定代码不再更改后同步到线上proposed(建议)分支：git push origin proposed
+        6. 更新到线上develop分支：git push origin dev
 
-        8. 最终项目负责人把稳定版同步到主分支master(有权限限制哦)：git push origin master
+
+        7. 最终项目负责人把稳定版同步到主分支master(有权限限制哦)：git push origin master
 
         ps:关于git的相关指令等操作可自我百度学习
 

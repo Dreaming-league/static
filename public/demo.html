@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理系统</title>
+
+    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
+    <link rel="stylesheet" href="css/Semantic-UI-CSS-master/semantic.min.css">
+    <style>
+        .ui.grid > .tk-key{min-height: 550px;cursor: pointer;}
+    </style>
+</head>
+<body>
+    <!-- 头部开始 -->
+    <div class="ui container tk-top" style="margin-bottom: 20px;margin-top: 10px;">
+        <div class="ui secondary  menu">
+            <a class="item">
+                <i class="icon home"></i>
+                    Home
+            </a>
+            <a class="item">
+                <i class="icon mail"></i>
+                Messages
+                <div class="floating ui red mini circular label">22</div>
+            </a>
+            <a class="item">
+                <i class="icon sitemap"></i>
+                后台菜单管理
+            </a>
+            <a class="active item">
+                <i class="icon privacy"></i>
+                权限管理
+            </a>
+            <a class="item">
+                <i class="loading icon setting"></i>
+                系统设置
+            </a>
+            <div class="ui simple pointing dropdown item">更多 <i class="dropdown icon"></i> <div class="menu">
+                <div class="header"><i class="tags icon"></i> Filter by tag </div>
+                <div class="divider"></div>
+                <div class="item">Choice 1</div>
+                <div class="item">Choice 2</div>
+                <div class="item">Choice 3</div>
+            </div>
+            </div>
+            <div class="right menu">
+                <div class="item">
+                    <div class="ui icon input">
+                        <input type="text" placeholder="Search...">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+                <a class="ui item">
+                    <img class="ui mini avatar image" src="images/thumb_DSC_0489_1024.jpg">
+                    admin
+                </a>
+                <a class="ui item">
+                    <i class="sign out icon"></i>
+                    退出
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- 头部结束 -->
+
+    <div class="ui container grid">
+        <!-- 左边开始 -->
+        <div class="three wide column tk-left">
+            <div class="ui teal vertical pointing menu">
+                <a class="active item"><div class="ui teal left pointing label">12</div><i class="user icon"></i>用户管理</a>
+                <a class="item"><div class="ui label">3</div><i class="group icon"></i>角色管理</a>
+                <a class="item"><div class="ui label">6</div><i class="privacy icon"></i>权限管理</a>
+            </div>
+        </div>
+        <!-- 左边结束 -->
+
+        <!-- 左边开关开始 -->
+        <div class="one wide column tk-left-key tk-key">
+            <div class="ui vertical divider"><</div>
+        </div>
+        <!-- 左边开关结束 -->
+
+        <!-- 中间内容开始 style="border:1px solid red;" -->
+        <div class="twelve wide column tk-content">
+            <!--<div class="ui tag label">路径</div>-->
+            <div class="ui segment">
+                <div class="ui small breadcrumb">
+                    <a class="section">权限管理</a>
+                    <i class="right chevron icon divider"></i>
+                    <a class="section">用户管理</a>
+                    <i class="right chevron icon divider"></i>
+                    <div class="active section">用户列表</div>
+                </div>
+            </div>
+
+            <div class="ui button">卡片</div>
+            <div class="ui button">统计</div>
+
+            <!--<div class="ui inverted divider"></div>-->
+            <table class="ui selectable sortable striped celled compact blue table">
+                <thead>
+                <tr>
+                    <th class="two wide">
+                        <div class="ui checkbox">
+                            <input type="checkbox">
+                            <label>序号</label>
+                        </div>
+                    </th>
+                    <th class="eight wide center aligned">登录名</th>
+                    <th class="four wide center aligned">昵称</th>
+                    <th class="two wide center aligned">性别</th>
+                </tr>
+                </thead>
+                <tbody ondrop="drop(event)" ondragover="allowDragover(event)">
+                <tr id="t1" class="rightKey" data-id="1" draggable="true" ondragstart="drag(event)">
+                    <td>
+                        <div class="ui checkbox">
+                            <input type="checkbox">
+                            <label>1</label>
+                        </div>
+                    </td>
+                    <td>John</td>
+                    <td>No Action</td>
+                    <td class="center aligned">
+                        <i class="male icon"></i>
+                    </td>
+                </tr>
+                <tr id="t2" class="rightKey" data-id="2" draggable="true" ondragstart="drag(event)">
+                    <td>
+                        <div class="ui checkbox">
+                        <input type="checkbox">
+                        <label>2</label>
+                        </div>
+                    </td>
+                    <td>Jamie</td>
+                    <td>Approved</td>
+                    <td class="center aligned">
+                        <i class="male icon"></i>
+                    </td>
+                </tr>
+                <tr id="t3" class="rightKey" data-id="3" draggable="true" ondragstart="drag(event)">
+                    <td>
+                        <div class="ui checkbox">
+                            <input type="checkbox">
+                            <label>3</label>
+                        </div>
+                    </td>
+                    <td>Jill</td>
+                    <td>Denied</td>
+                    <td class="center aligned">
+                        <i class="female icon"></i>
+                    </td>
+                </tr>
+                <tr id="t4" class="rightKey" data-id="4" draggable="true" ondragstart="drag(event)">
+                    <td>
+                        <div class="ui checkbox">
+                            <input type="checkbox">
+                            <label>4</label>
+                        </div>
+                    </td>
+                    <td>John</td>
+                    <td>No Action</td>
+                    <td class="center aligned">
+                        <i class="male icon"></i>
+                    </td>
+                </tr>
+                <tr id="t5" class="rightKey" data-id="5" draggable="true" ondragstart="drag(event)">
+                    <td>
+                        <div class="ui checkbox">
+                            <input type="checkbox">
+                            <label>5</label>
+                        </div>
+                    </td>
+                    <td>Jamie</td>
+                    <td>Approved</td>
+                    <td class="center aligned">
+                        <i class="woman icon"></i>
+                    </td>
+                </tr>
+                <tr id="t6" class="rightKey" data-id="6" draggable="true" ondragstart="drag(event)">
+                    <td>
+                        <div class="ui checkbox">
+                            <input type="checkbox">
+                            <label>6</label>
+                        </div>
+                    </td>
+                    <td>Jill</td>
+                    <td>Denied</td>
+                    <td class="center aligned">
+                        <i class="man icon"></i>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="4">
+                            <!--left arrow／chevron-->
+                            <div class="ui tiny left floated borderless pagination menu">
+                                <div class="icon item">
+                                    共10页
+                                </div>
+                                <a class="icon item">
+                                    <i class="left tiny chevron icon"></i>上一页
+                                </a>
+                                <a class="item">1</a>
+                                <a class="item">2</a>
+                                <a class="item">3</a>
+                                <a class="item">4</a>
+                                <a class="icon item">
+                                    下一页<i class="right chevron icon"></i>
+                                </a>
+                                <div class="icon item">
+
+                                    <div class="ui tiny right labeled input">
+                                        <div class="ui basic label">跳到</div>
+                                        <input type="text" placeholder="第几页">
+                                        <div class="ui basic label">页</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="ui right floated button">
+                                确定排序
+                            </div>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+        <!-- 中间内容结束 -->
+
+        <!-- 右边菜单开始 -->
+        <!--<div class="three wide column tk-right" style="position:absolute;right: 10px;">-->
+            <!--<div class="ui teal vertical pointing menu">-->
+                <!--<a class="item"><div class="ui label">51</div><i class="video camera icon"></i>Home</a>-->
+                <!--<a class="item"><div class="ui label">51</div><i class="video play icon"></i>Messages</a>-->
+                <!--<a class="active item"><div class="ui teal left pointing label">51</div><i class="gamepad icon"></i>Friends</a>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!-- 右边菜单结束 -->
+    </div>
+
+    <script src='js/vender/jquery.js'></script>
+    <script src='js/vender/semantic.js'></script>
+    <script>
+        //左侧菜单隐藏
+        $(".ui.grid > .tk-left-key").click(function(){
+            $(".ui.grid > .tk-left").toggle();
+            if($(this).children().text().indexOf(">")>=0){
+                $(this).children().text("<");
+                $(".tk-content").removeClass("fifteen wide column").addClass("twelve wide column");
+            }else if($(this).children().text().indexOf("<")>=0){
+                $(this).children().text(">");
+                $(".tk-content").removeClass("twelve wide column").addClass("fifteen wide column");
+            }
+        });
+
+        window.oncontextmenu = function(){return false;}
+
+//        $('.rightKey').mousedown(function(e){
+//            if(1 == e.which){//左键
+//                console.log("左键事件");
+//            }else{//2中建／3右键
+//                console.log("右键事件");
+//                $(this).popup('show');
+//            }
+//        });
+
+        function allowDragover(ev){
+            ev.preventDefault();//取消不允许拖动到其中的默认行为
+        }
+
+        function drag(ev){//设置被拖数据的数据类型和值
+            ev.dataTransfer.setData("css-id",ev.target.id);
+            ev.dataTransfer.setData("data-id",$(ev.target).data("id"));
+//            console.log($(ev.target).data("id"));//获取纪录ID
+        }
+
+        function drop(ev){
+            ev.preventDefault();
+            var css_id=ev.dataTransfer.getData("css-id");//源
+            $(ev.target).parent().after(document.getElementById(css_id));//移动
+
+            var data_id = ev.dataTransfer.getData("data-id");//被移动纪录ID
+            var target_data_id = $(ev.target).parent().data("id");//目标纪录ID
+            console.log(data_id);
+            console.log(target_data_id);
+        }
+
+
+        $(function(){
+
+            $('.rightKey')
+                    .popup({
+                        html: '   <div class="ui vertical menu">                              '+
+                        '       <div class="item">                                                      '+
+                        '           <div class="header">基本操作</div>                                      '+
+                        '           <div class="menu">                                                  '+
+                        '               <a class="item"><i class="add user icon"></i>增加</a>             '+
+                        '               <a class="item"><i class="edit icon"></i>修改</a>                 '+
+                        '               <a class="item"><i class="remove user icon"></i>删除</a>          '+
+                        '           </div>                                                              '+
+                        '       </div>                                                                  '+
+                        '       <div class="item">                                                      '+
+                        '           <div class="header">扩展操作</div>                                      '+
+                        '           <div class="menu">                                                  '+
+                        '               <a class="item"><i class="cloud upload icon"></i>导入Excel</a>    '+
+                        '               <a class="item"><i class="cloud download icon"></i>导出Excel</a>  '+
+                        '           </div>                                                              '+
+                        '       </div>                                                                  '+
+                        '   </div>                                                                      ',
+                        inline : false,
+                        hoverable  : true,
+                        lastResort   : true,
+                        on : 'click',
+                        position   : 'bottom center',
+                        delay: {
+                            show: 200,
+                            hide: 300
+                        }
+                    })
+            ;
+        });
+    </script>
+</body>
+</html>

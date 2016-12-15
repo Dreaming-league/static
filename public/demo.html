@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/Semantic-UI-CSS-master/semantic.min.css">
     <style>
         .ui.grid > .tk-key{min-height: 550px;cursor: pointer;}
+        .signed{overflow-y: scroll;height: 38px;}
     </style>
 </head>
 <body>
@@ -30,6 +31,7 @@
             <a class="active item">
                 <i class="icon privacy"></i>
                 权限管理
+                <div class="floating ui green mini circular label">新</div>
             </a>
             <a class="item">
                 <i class="loading icon setting"></i>
@@ -45,9 +47,16 @@
             </div>
             <div class="right menu">
                 <div class="item">
-                    <div class="ui icon input">
-                        <input type="text" placeholder="Search...">
-                        <i class="search link icon"></i>
+                    <!--<div class="ui icon input">-->
+                        <!--<input type="text" placeholder="Search...">-->
+                        <!--<i class="search link icon"></i>-->
+                    <!--</div>-->
+                    <div class="ui search github">
+                        <div class="ui icon input">
+                            <input class="prompt" type="text" placeholder="Search GitHub...">
+                            <i class="github icon"></i>
+                        </div>
+                        <!--<div class="results"></div>-->
                     </div>
                 </div>
                 <a class="ui item">
@@ -93,105 +102,118 @@
                 </div>
             </div>
 
-            <div class="ui button">卡片</div>
-            <div class="ui button">统计</div>
+            <div class="tkm-user" style="margin-bottom: 10px;">
+                <div class="ui primary active button">列表</div>
+                <div class="ui button">卡片</div>
+                <div class="ui button">统计</div>
+                <div class="ui button" style="padding: 0;border-radius: 20px;">
+                    <div class="ui search tk-user-search">
+                        <div class="ui icon input">
+                            <input class="prompt" type="text" placeholder="Search ...">
+                            <i class="search icon"></i>
+                        </div>
+                        <div class="results"></div>
+                    </div>
+                </div>
+            </div>
 
-            <!--<div class="ui inverted divider"></div>-->
-            <table class="ui selectable sortable striped celled compact blue table">
-                <thead>
-                <tr>
-                    <th class="two wide">
-                        <div class="ui checkbox">
-                            <input type="checkbox">
-                            <label>序号</label>
-                        </div>
-                    </th>
-                    <th class="eight wide center aligned">登录名</th>
-                    <th class="four wide center aligned">昵称</th>
-                    <th class="two wide center aligned">性别</th>
-                </tr>
-                </thead>
-                <tbody ondrop="drop(event)" ondragover="allowDragover(event)">
-                <tr id="t1" class="rightKey" data-id="1" draggable="true" ondragstart="drag(event)">
-                    <td>
-                        <div class="ui checkbox">
-                            <input type="checkbox">
-                            <label>1</label>
-                        </div>
-                    </td>
-                    <td>John</td>
-                    <td>No Action</td>
-                    <td class="center aligned">
-                        <i class="male icon"></i>
-                    </td>
-                </tr>
-                <tr id="t2" class="rightKey" data-id="2" draggable="true" ondragstart="drag(event)">
-                    <td>
-                        <div class="ui checkbox">
-                        <input type="checkbox">
-                        <label>2</label>
-                        </div>
-                    </td>
-                    <td>Jamie</td>
-                    <td>Approved</td>
-                    <td class="center aligned">
-                        <i class="male icon"></i>
-                    </td>
-                </tr>
-                <tr id="t3" class="rightKey" data-id="3" draggable="true" ondragstart="drag(event)">
-                    <td>
-                        <div class="ui checkbox">
-                            <input type="checkbox">
-                            <label>3</label>
-                        </div>
-                    </td>
-                    <td>Jill</td>
-                    <td>Denied</td>
-                    <td class="center aligned">
-                        <i class="female icon"></i>
-                    </td>
-                </tr>
-                <tr id="t4" class="rightKey" data-id="4" draggable="true" ondragstart="drag(event)">
-                    <td>
-                        <div class="ui checkbox">
-                            <input type="checkbox">
-                            <label>4</label>
-                        </div>
-                    </td>
-                    <td>John</td>
-                    <td>No Action</td>
-                    <td class="center aligned">
-                        <i class="male icon"></i>
-                    </td>
-                </tr>
-                <tr id="t5" class="rightKey" data-id="5" draggable="true" ondragstart="drag(event)">
-                    <td>
-                        <div class="ui checkbox">
-                            <input type="checkbox">
-                            <label>5</label>
-                        </div>
-                    </td>
-                    <td>Jamie</td>
-                    <td>Approved</td>
-                    <td class="center aligned">
-                        <i class="woman icon"></i>
-                    </td>
-                </tr>
-                <tr id="t6" class="rightKey" data-id="6" draggable="true" ondragstart="drag(event)">
-                    <td>
-                        <div class="ui checkbox">
-                            <input type="checkbox">
-                            <label>6</label>
-                        </div>
-                    </td>
-                    <td>Jill</td>
-                    <td>Denied</td>
-                    <td class="center aligned">
-                        <i class="man icon"></i>
-                    </td>
-                </tr>
-                </tbody>
-                <tfoot>
+            <div class="tkm-user-container">
+                <!--<div class="ui inverted divider"></div>-->
+                <table class="ui selectable striped celled compact blue table">
+                    <thead>
+                    <tr>
+                        <th class="two wide">
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>序号</label>
+                            </div>
+                        </th>
+                        <th class="eight wide center aligned ascending">登录名</th>
+                        <th class="four wide center aligned">昵称</th>
+                        <th class="two wide center aligned">性别</th>
+                    </tr>
+                    </thead>
+                    <tbody ondrop="drop(event)" ondragover="allowDragover(event)">
+                    <tr id="t1" class="rightKey" data-id="1" draggable="true" ondragstart="drag(event)">
+                        <td>
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>1</label>
+                            </div>
+                        </td>
+                        <td>John</td>
+                        <td>No Action</td>
+                        <td class="center aligned">
+                            <i class="male icon"></i>
+                        </td>
+                    </tr>
+                    <tr id="t2" class="rightKey" data-id="2" draggable="true" ondragstart="drag(event)">
+                        <td>
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>2</label>
+                            </div>
+                        </td>
+                        <td>Jamie</td>
+                        <td>Approved</td>
+                        <td class="center aligned">
+                            <i class="male icon"></i>
+                        </td>
+                    </tr>
+                    <tr id="t3" class="rightKey" data-id="3" draggable="true" ondragstart="drag(event)">
+                        <td>
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>3</label>
+                            </div>
+                        </td>
+                        <td>Jill</td>
+                        <td>Denied</td>
+                        <td class="center aligned">
+                            <i class="female icon"></i>
+                        </td>
+                    </tr>
+                    <tr id="t4" class="rightKey" data-id="4" draggable="true" ondragstart="drag(event)">
+                        <td>
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>4</label>
+                            </div>
+                        </td>
+                        <td>John</td>
+                        <td>No Action</td>
+                        <td class="center aligned">
+                            <i class="male icon"></i>
+                        </td>
+                    </tr>
+                    <tr id="t5" class="rightKey" data-id="5" draggable="true" ondragstart="drag(event)">
+                        <td>
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>5</label>
+                            </div>
+                        </td>
+                        <td>Jamie</td>
+                        <td>Approved</td>
+                        <td class="center aligned">
+                            <i class="woman icon"></i>
+                        </td>
+                    </tr>
+                    <tr id="t6" class="rightKey" data-id="6" draggable="true" ondragstart="drag(event)">
+                        <td>
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>6</label>
+                            </div>
+                        </td>
+                        <td>Jill</td>
+                        <td>Denied</td>
+                        <td class="center aligned">
+                            <i class="man icon"></i>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
                     <tr>
                         <th colspan="4">
                             <!--left arrow／chevron-->
@@ -224,8 +246,114 @@
                             </div>
                         </th>
                     </tr>
-                </tfoot>
-            </table>
+                    </tfoot>
+                </table>
+
+                <!--卡片-->
+                <div class="ui link cards four column grid" style="display: none;">
+                    <div class="card">
+                        <div class="image">
+                            <img src="images/thumb_DSC_0489_1024.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="header">沐春风</div>
+                            <span class="right floated"><i class="man icon"></i></span>
+                            <div class="meta">
+                                <a>潜龙在渊</a>
+                            </div>
+                            <div class="description signed">
+                                最可悲的是没有理想，一天天重复着同样的生活.
+                                <!--<div class="ui accordion">-->
+                                <!--<div class="title"><i class="dropdown icon"></i> What is a dog? </div>-->
+                                <!--<div class="content">-->
+                                <!--<p class="transition hidden">最可悲的是没有理想，一天天重复着同样的生活.</p>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="right floated">Joined in 2013 </span>
+                            <span><i class="user icon"></i>25 属羊</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="image">
+                            <img src="images/thumb_DSC_0489_1024.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="header">沐春风</div>
+                            <span class="right floated"><i class="man icon"></i></span>
+                            <div class="meta">
+                                <a>潜龙在渊</a>
+                            </div>
+                            <div class="description signed">
+                                最可悲的是没有理想，一天天重复着同样的生活.
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="right floated">Joined in 2013 </span>
+                            <span><i class="user icon"></i>25 属羊</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="image">
+                            <img src="images/thumb_DSC_0489_1024.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="header">沐春风</div>
+                            <span class="right floated"><i class="man icon"></i></span>
+                            <div class="meta">
+                                <a>潜龙在渊</a>
+                            </div>
+                            <div class="description signed">
+                                最可悲的是没有理想，一天天重复着同样的生活.
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="right floated">Joined in 2013 </span>
+                            <span><i class="user icon"></i>25 属羊</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="image">
+                            <img src="images/thumb_DSC_0489_1024.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="header">沐春风</div>
+                            <span class="right floated"><i class="man icon"></i></span>
+                            <div class="meta">
+                                <a>潜龙在渊</a>
+                            </div>
+                            <div class="description signed">
+                                最可悲的是没有理想，一天天重复着同样的生活.
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="right floated">Joined in 2013 </span>
+                            <span><i class="user icon"></i>25 属羊</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="image">
+                            <img src="images/thumb_DSC_0489_1024.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="header">沐春风</div>
+                            <span class="right floated"><i class="man icon"></i></span>
+                            <div class="meta">
+                                <a>潜龙在渊</a>
+                            </div>
+                            <div class="description signed">
+                                最可悲的是没有理想，一天天重复着同样的生活.
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="right floated">Joined in 2013 </span>
+                            <span><i class="user icon"></i>25 属羊</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <!-- 中间内容结束 -->
@@ -243,6 +371,7 @@
 
     <script src='js/vender/jquery.js'></script>
     <script src='js/vender/semantic.js'></script>
+    <script src='js/vender/tk-drag.js'></script>
     <script>
         //左侧菜单隐藏
         $(".ui.grid > .tk-left-key").click(function(){
@@ -256,41 +385,61 @@
             }
         });
 
-        window.oncontextmenu = function(){return false;}
+        $(".tkm-user").children().click(function () {
+            if($(this).index()==3)return false;
+            $(this).siblings().removeClass("primary active");
+            $(this).addClass("primary active");
 
-//        $('.rightKey').mousedown(function(e){
-//            if(1 == e.which){//左键
-//                console.log("左键事件");
-//            }else{//2中建／3右键
-//                console.log("右键事件");
-//                $(this).popup('show');
-//            }
-//        });
+            $(".tkm-user-container").children()
+                    .css("display","none")
+                    .eq($(this).index()).css("display","");
 
-        function allowDragover(ev){
-            ev.preventDefault();//取消不允许拖动到其中的默认行为
-        }
-
-        function drag(ev){//设置被拖数据的数据类型和值
-            ev.dataTransfer.setData("css-id",ev.target.id);
-            ev.dataTransfer.setData("data-id",$(ev.target).data("id"));
-//            console.log($(ev.target).data("id"));//获取纪录ID
-        }
-
-        function drop(ev){
-            ev.preventDefault();
-            var css_id=ev.dataTransfer.getData("css-id");//源
-            $(ev.target).parent().after(document.getElementById(css_id));//移动
-
-            var data_id = ev.dataTransfer.getData("data-id");//被移动纪录ID
-            var target_data_id = $(ev.target).parent().data("id");//目标纪录ID
-            console.log(data_id);
-            console.log(target_data_id);
-        }
-
+        });
 
         $(function(){
+            //搜索
+            $('.ui.search.github')
+                    .search({
+                        type          : 'category',
+                        minCharacters : 3,
+                        apiSettings   : {
+                            onResponse: function(githubResponse) {
+                                var
+                                        response = {
+                                            results : {}
+                                        }
+                                        ;
+                                // translate GitHub API response to work with search
+                                $.each(githubResponse.items, function(index, item) {
+                                    var
+                                            language   = item.language || 'Unknown',
+                                            maxResults = 8
+                                            ;
+                                    if(index >= maxResults) {
+                                        return false;
+                                    }
+                                    // create new language category
+                                    if(response.results[language] === undefined) {
+                                        response.results[language] = {
+                                            name    : language,
+                                            results : []
+                                        };
+                                    }
+                                    // add result to category
+                                    response.results[language].results.push({
+                                        title       : item.name,
+                                        description : item.description,
+                                        url         : item.html_url
+                                    });
+                                });
+                                return response;
+                            },
+                            url: '//api.github.com/search/repositories?q={query}'
+                        }
+                    })
+            ;
 
+            //左键弹出操作选项-选项需要动态加载
             $('.rightKey')
                     .popup({
                         html: '   <div class="ui vertical menu">                              '+
@@ -319,6 +468,40 @@
                             show: 200,
                             hide: 300
                         }
+                    })
+            ;
+
+            var content = [
+                { title: '沐春风' },
+                { title: 'United Arab Emirates' },
+                { title: 'Afghanistan' },
+                { title: 'Antigua' },
+                { title: 'Anguilla' },
+                { title: 'Albania' },
+                { title: 'Armenia' },
+                { title: 'Netherlands Antilles' },
+                { title: 'Angola' },
+                { title: 'Argentina' },
+                { title: 'American Samoa' },
+                { title: 'Austria' },
+                { title: 'Australia' },
+                { title: 'Aruba' },
+                { title: 'Aland Islands' },
+                { title: 'Azerbaijan' },
+                { title: 'Bosnia' },
+                { title: 'Barbados' },
+                { title: 'Bangladesh' },
+                { title: 'Belgium' },
+                { title: 'Burkina Faso' },
+                { title: 'Bulgaria' },
+                { title: 'Bahrain' },
+                { title: 'Burundi' }
+                // etc
+            ];
+
+            $('.ui.search.tk-user-search')
+                    .search({
+                        source: content
                     })
             ;
         });

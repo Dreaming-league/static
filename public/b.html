@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
+    <link rel="stylesheet" href="css/Semantic-UI-CSS-master/semantic.min.css">
+    <title>后台管理</title>
+
+    <style>
+        .ui.grid > .tk-key{min-height: 550px;cursor: pointer;}
+        .signed{overflow-y: scroll;height: 38px;}
+    </style>
+</head>
+<body>
+    <!-- 头部开始 -->
+    <div class="ui container tk-top" style="margin: 10px 0;">
+        <div class="ui secondary menu">
+            <div id="head-menu" style="margin: auto 0;">
+                <div v-for="(index, item) in items" style="display: inline-block;">
+                    <a href="{{ item.href | json  }}" class="{{ item.active | json }} item">
+                        <i class="{{ item.icon0 | json }}"></i>
+                        {{ item.menu | json }}
+                        <div class="{{ item.icon1 | json }}">{{ item.tip | json }}</div>
+                    </a>
+                </div>
+            </div>
+            <!--更多-->
+            <div class="ui simple dropdown item tk-more" style="padding: 5px;">
+                <span class="text" style="line-height: 24px;"><i class="ellipsis vertical icon"></i>更多</span>
+                <div class="menu">
+                    <div class="ui icon search input tk-menu-search">
+                        <i class="search icon"></i>
+                        <input type="text" name="search" placeholder="搜索问题...">
+                    </div>
+                    <div class="divider"></div>
+                    <div id="head-menu-more">
+                        <div v-for="(index, item) in items" style="width: 100%;">
+                            <a href="{{ item.href }}" class="{{ item.active }} item" style="margin: 5px 10px;line-height: 24px;padding: 5px 0px;">
+                                <i class="{{ item.icon0 }}" style="margin: auto 0;"></i>
+                                {{ item.menu }}
+                                <div class="{{ item.icon1 }}">{{ item.tip }}</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right menu">
+                <div class="item">
+                    <div class="ui search github">
+                        <div class="ui icon input">
+                            <input class="prompt" type="text" placeholder="Search GitHub...">
+                            <i class="github icon"></i>
+                        </div>
+                        <!--<div class="results"></div>-->
+                    </div>
+                </div>
+                <a class="ui item">
+                    <img class="ui mini avatar image" src="images/thumb_DSC_0489_1024.jpg">
+                    admin
+                </a>
+                <a class="ui item">
+                    <i class="sign out icon"></i>
+                    退出
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- 头部结束 -->
+
+    <div class="ui container grid">
+        <!-- 左边开始 -->
+        <div class="three wide column tk-left">
+            <div class="ui teal vertical pointing menu">
+                <a class="active item"><div class="ui teal left pointing label">12</div><i class="user icon"></i>用户管理</a>
+                <a class="item"><div class="ui label">3</div><i class="group icon"></i>角色管理</a>
+                <a class="item"><div class="ui label">6</div><i class="privacy icon"></i>权限管理</a>
+            </div>
+        </div>
+        <!-- 左边结束 -->
+
+        <!-- 左边开关开始 -->
+        <div class="one wide column tk-left-key tk-key">
+            <div class="ui vertical divider"><</div>
+        </div>
+        <!-- 左边开关结束 -->
+
+        <!-- 中间内容开始 style="border:1px solid red;" -->
+        <div class="twelve wide column tk-content">
+            <!--<div class="ui tag label">路径</div>-->
+            <div class="ui segment">
+                <div class="ui small breadcrumb">
+                    <a class="section">权限管理</a>
+                    <i class="right chevron icon divider"></i>
+                    <a class="section">用户管理</a>
+                    <i class="right chevron icon divider"></i>
+                    <div class="active section">用户列表</div>
+                </div>
+            </div>
+
+            <div class="tkm-user" style="margin-bottom: 10px;">
+                <div class="ui primary active button">列表</div>
+                <div class="ui button">卡片</div>
+                <div class="ui button">统计</div>
+                <div class="ui button" style="padding: 0;border-radius: 20px;">
+                    <div class="ui search tk-user-search">
+                        <div class="ui icon input">
+                            <input class="prompt" type="text" placeholder="Search ...">
+                            <i class="search icon"></i>
+                        </div>
+                        <div class="results"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tkm-user-container">
+                <!--<div class="ui inverted divider"></div>-->
+                <table class="ui selectable striped celled compact blue table">
+                    <thead>
+                    <tr>
+                        <th class="two wide">
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>序号</label>
+                            </div>
+                        </th>
+                        <th class="eight wide center aligned ascending">登录名</th>
+                        <th class="four wide center aligned">昵称</th>
+                        <th class="two wide center aligned">性别</th>
+                    </tr>
+                    </thead>
+                    <tbody ondrop="drop(event)" ondragover="allowDragover(event)">
+                    <tr id="t1" class="rightKey" data-id="1" draggable="true" ondragstart="drag(event)">
+                        <td>
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>1</label>
+                            </div>
+                        </td>
+                        <td>John</td>
+                        <td>No Action</td>
+                        <td class="center aligned">
+                            <i class="male icon"></i>
+                        </td>
+                    </tr>
+                    <tr id="t2" class="rightKey" data-id="2" draggable="true" ondragstart="drag(event)">
+                        <td>
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>2</label>
+                            </div>
+                        </td>
+                        <td>Jamie</td>
+                        <td>Approved</td>
+                        <td class="center aligned">
+                            <i class="male icon"></i>
+                        </td>
+                    </tr>
+                    <tr id="t3" class="rightKey" data-id="3" draggable="true" ondragstart="drag(event)">
+                        <td>
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>3</label>
+                            </div>
+                        </td>
+                        <td>Jill</td>
+                        <td>Denied</td>
+                        <td class="center aligned">
+                            <i class="female icon"></i>
+                        </td>
+                    </tr>
+                    <tr id="t4" class="rightKey" data-id="4" draggable="true" ondragstart="drag(event)">
+                        <td>
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>4</label>
+                            </div>
+                        </td>
+                        <td>John</td>
+                        <td>No Action</td>
+                        <td class="center aligned">
+                            <i class="male icon"></i>
+                        </td>
+                    </tr>
+                    <tr id="t5" class="rightKey" data-id="5" draggable="true" ondragstart="drag(event)">
+                        <td>
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>5</label>
+                            </div>
+                        </td>
+                        <td>Jamie</td>
+                        <td>Approved</td>
+                        <td class="center aligned">
+                            <i class="woman icon"></i>
+                        </td>
+                    </tr>
+                    <tr id="t6" class="rightKey" data-id="6" draggable="true" ondragstart="drag(event)">
+                        <td>
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>6</label>
+                            </div>
+                        </td>
+                        <td>Jill</td>
+                        <td>Denied</td>
+                        <td class="center aligned">
+                            <i class="man icon"></i>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th colspan="4">
+                            <!--left arrow／chevron-->
+                            <div class="ui tiny left floated borderless pagination menu">
+                                <div class="icon item">
+                                    共10页
+                                </div>
+                                <a class="icon item">
+                                    <i class="left tiny chevron icon"></i>上一页
+                                </a>
+                                <a class="item">1</a>
+                                <a class="item">2</a>
+                                <a class="item">3</a>
+                                <a class="item">4</a>
+                                <a class="icon item">
+                                    下一页<i class="right chevron icon"></i>
+                                </a>
+                                <div class="icon item">
+
+                                    <div class="ui tiny right labeled input">
+                                        <div class="ui basic label">跳到</div>
+                                        <input type="text" placeholder="第几页">
+                                        <div class="ui basic label">页</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="ui right floated button">
+                                确定排序
+                            </div>
+                        </th>
+                    </tr>
+                    </tfoot>
+                </table>
+
+                <!--卡片-->
+                <div class="ui link cards four column grid" style="display: none;">
+                    <div class="card">
+                        <div class="image">
+                            <img src="images/thumb_DSC_0489_1024.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="header">沐春风</div>
+                            <span class="right floated"><i class="man icon"></i></span>
+                            <div class="meta">
+                                <a>潜龙在渊</a>
+                            </div>
+                            <div class="description signed">
+                                最可悲的是没有理想，一天天重复着同样的生活.
+                                <!--<div class="ui accordion">-->
+                                <!--<div class="title"><i class="dropdown icon"></i> What is a dog? </div>-->
+                                <!--<div class="content">-->
+                                <!--<p class="transition hidden">最可悲的是没有理想，一天天重复着同样的生活.</p>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="right floated">Joined in 2013 </span>
+                            <span><i class="user icon"></i>25 属羊</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="image">
+                            <img src="images/thumb_DSC_0489_1024.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="header">沐春风</div>
+                            <span class="right floated"><i class="man icon"></i></span>
+                            <div class="meta">
+                                <a>潜龙在渊</a>
+                            </div>
+                            <div class="description signed">
+                                最可悲的是没有理想，一天天重复着同样的生活.
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="right floated">Joined in 2013 </span>
+                            <span><i class="user icon"></i>25 属羊</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="image">
+                            <img src="images/thumb_DSC_0489_1024.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="header">沐春风</div>
+                            <span class="right floated"><i class="man icon"></i></span>
+                            <div class="meta">
+                                <a>潜龙在渊</a>
+                            </div>
+                            <div class="description signed">
+                                最可悲的是没有理想，一天天重复着同样的生活.
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="right floated">Joined in 2013 </span>
+                            <span><i class="user icon"></i>25 属羊</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="image">
+                            <img src="images/thumb_DSC_0489_1024.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="header">沐春风</div>
+                            <span class="right floated"><i class="man icon"></i></span>
+                            <div class="meta">
+                                <a>潜龙在渊</a>
+                            </div>
+                            <div class="description signed">
+                                最可悲的是没有理想，一天天重复着同样的生活.
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="right floated">Joined in 2013 </span>
+                            <span><i class="user icon"></i>25 属羊</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="image">
+                            <img src="images/thumb_DSC_0489_1024.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="header">沐春风</div>
+                            <span class="right floated"><i class="man icon"></i></span>
+                            <div class="meta">
+                                <a>潜龙在渊</a>
+                            </div>
+                            <div class="description signed">
+                                最可悲的是没有理想，一天天重复着同样的生活.
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="right floated">Joined in 2013 </span>
+                            <span><i class="user icon"></i>25 属羊</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- 中间内容结束 -->
+
+        <!-- 右边菜单开始 -->
+        <!--<div class="three wide column tk-right" style="position:absolute;right: 10px;">-->
+        <!--<div class="ui teal vertical pointing menu">-->
+        <!--<a class="item"><div class="ui label">51</div><i class="video camera icon"></i>Home</a>-->
+        <!--<a class="item"><div class="ui label">51</div><i class="video play icon"></i>Messages</a>-->
+        <!--<a class="active item"><div class="ui teal left pointing label">51</div><i class="gamepad icon"></i>Friends</a>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- 右边菜单结束 -->
+    </div>
+
+
+
+    <script src='js/vender/jquery.js'></script>
+    <script src='js/vender/semantic.js'></script>
+    <script src='js/vender/vue.js'></script>
+
+    <script src='js/vender/tk-header.js'></script>
+    <script src='js/vender/tk-drag.js'></script>
+
+    <script>
+
+        //左侧菜单隐藏
+        $(".ui.grid > .tk-left-key").click(function(){
+            $(".ui.grid > .tk-left").toggle();
+            if($(this).children().text().indexOf(">")>=0){
+                $(this).children().text("<");
+                $(".tk-content").removeClass("fifteen wide column").addClass("twelve wide column");
+            }else if($(this).children().text().indexOf("<")>=0){
+                $(this).children().text(">");
+                $(".tk-content").removeClass("twelve wide column").addClass("fifteen wide column");
+            }
+        });
+
+        $(".tkm-user").children().click(function () {
+            if($(this).index()==3)return false;
+            $(this).siblings().removeClass("primary active");
+            $(this).addClass("primary active");
+
+            $(".tkm-user-container").children()
+                    .css("display","none")
+                    .eq($(this).index()).css("display","");
+
+        });
+
+
+        $(function(){
+
+            //左键弹出操作选项-选项需要动态加载
+            $('.rightKey')
+                    .popup({
+                        html: '   <div class="ui vertical menu">                              '+
+                        '       <div class="item">                                                      '+
+                        '           <div class="header">基本操作</div>                                      '+
+                        '           <div class="menu">                                                  '+
+                        '               <a class="item"><i class="add user icon"></i>增加</a>             '+
+                        '               <a class="item"><i class="edit icon"></i>修改</a>                 '+
+                        '               <a class="item"><i class="remove user icon"></i>删除</a>          '+
+                        '           </div>                                                              '+
+                        '       </div>                                                                  '+
+                        '       <div class="item">                                                      '+
+                        '           <div class="header">扩展操作</div>                                      '+
+                        '           <div class="menu">                                                  '+
+                        '               <a class="item"><i class="cloud upload icon"></i>导入Excel</a>    '+
+                        '               <a class="item"><i class="cloud download icon"></i>导出Excel</a>  '+
+                        '           </div>                                                              '+
+                        '       </div>                                                                  '+
+                        '   </div>                                                                      ',
+                        inline : false,
+                        hoverable  : true,
+                        lastResort   : true,
+                        on : 'click',
+                        position   : 'bottom center',
+                        delay: {
+                            show: 200,
+                            hide: 300
+                        }
+                    });
+
+            var user_data = [
+                { title: '沐春风' },
+                { title: 'United Arab Emirates' },
+                { title: 'Afghanistan' },
+                { title: 'Antigua' },
+                { title: 'Anguilla' },
+                { title: 'Albania' },
+                { title: 'Armenia' },
+                { title: 'Netherlands Antilles' },
+                { title: 'Angola' },
+                { title: 'Argentina' },
+                { title: 'American Samoa' },
+                { title: 'Austria' },
+                { title: 'Australia' },
+                { title: 'Aruba' },
+                { title: 'Aland Islands' },
+                { title: 'Azerbaijan' },
+                { title: 'Bosnia' },
+                { title: 'Barbados' },
+                { title: 'Bangladesh' },
+                { title: 'Belgium' },
+                { title: 'Burkina Faso' },
+                { title: 'Bulgaria' },
+                { title: 'Bahrain' },
+                { title: 'Burundi' }
+                // etc
+            ];
+            //用户搜索
+            $('.ui.search.tk-user-search')
+                    .search({
+                        source: user_data
+                    });
+        });
+
+    </script>
+</body>
+</html>

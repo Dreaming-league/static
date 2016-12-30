@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
+    <link rel="stylesheet" href="css/Semantic-UI-CSS-master/semantic.min.css">
+    <title>模拟路由导航</title>
+    <style>
+        .ui.grid > .tk-key{min-height: 550px;cursor: pointer;}
+        .signed{overflow-y: scroll;height: 38px;}
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <!-- 头部开始 -->
+        <div class="ui container tk-top" style="margin: 10px 0;">
+            <div class="ui secondary menu">
+                <div id="head-menu" style="margin: auto 0;">
+                    <div v-for="(item,index) in items" style="display: inline-block;">
+                        <div v-if="index < 4">
+                            <router-link :to="item.href" :class="item.active">
+                                <i :class="item.icon0"></i>
+                                {{ item.menu }}
+                                <div :class="item.icon1">{{ item.tip }}</div>
+                            </router-link>
+                        </div>
+                    </div>
+                    <div v-if="items.length > 4 " style="float: right;">
+                        <!--更多-->
+                        <div class="ui simple dropdown item tk-more" style="padding: 5px;">
+                            <span class="text" style="line-height: 24px;"><i class="ellipsis vertical icon"></i>更多</span>
+                            <div class="menu">
+                                <div class="ui icon search input tk-menu-search">
+                                    <i class="search icon"></i>
+                                    <input type="text" name="search" placeholder="搜索问题...">
+                                </div>
+                                <div class="divider"></div>
+                                <div id="head-menu-more">
+                                    <div v-for="(item,index) in items" style="width: 100%;">
+                                        <div v-if="index >=4 ">
+                                            <router-link :to="item.href" :class="item.active" style="margin: 5px 10px;line-height: 24px;padding: 5px 0px;">
+                                                <i :class="item.icon0" style="margin: auto 0;"></i>
+                                                {{ item.menu }}
+                                                <div :class="item.icon1">{{ item.tip }}</div>
+                                            </router-link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right menu">
+                    <div class="item">
+                        <div class="ui search github">
+                            <div class="ui icon input">
+                                <input class="prompt" type="text" placeholder="Search GitHub...">
+                                <i class="github icon"></i>
+                            </div>
+                            <!--<div class="results"></div>-->
+                        </div>
+                    </div>
+                    <a class="ui item">
+                        <img class="ui mini avatar image" src="images/thumb_DSC_0489_1024.jpg">
+                        admin
+                    </a>
+                    <a class="ui item">
+                        <i class="sign out icon"></i>
+                        退出
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- 头部结束 -->
+        <router-view></router-view>
+
+    </div>
+
+    <script src='js/vender/jquery.js'></script>
+    <script src='js/vender/semantic.js'></script>
+
+    <script src='js/vender/vue.js'></script>
+    <script src='js/vender/vue-router.js'></script>
+
+    <script src='js/vender/tk-header.js'></script>
+
+    <script>
+        Vue.config.debug = true
+        Vue.config.devtools = true
+
+        // 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
+
+        //头菜单
+        var head_data = {
+            items: [
+                { menu: 'CMS系统' ,href:"/cms/0" ,active:'item' ,icon0: 'icon home' ,icon1 :'floating ui green mini circular label',tip: '新' },
+                { menu: '数据可视化系统' ,href:"datas",active:'item',icon0: 'icon home' ,icon1 :'floating ui green mini circular label',tip: '新' },
+                { menu: '权限管理' ,href:"/home",active:'active blue item',icon0: 'icon privacy' ,icon1 :'floating ui green mini circular label',tip: '新' },
+                { menu: '后台菜单管理' ,href:"/menu/profile",active:'item',icon0: 'icon sitemap' ,icon1 :'ui floating red mini circular label',tip: '2' },
+                { menu: '系统设置' ,href:"#",active:'item',icon0: 'icon loading setting' ,icon1 :'ui right floated red mini circular label',tip: '3' },
+                { menu: '设置' ,href:"#",active:'item',icon0: 'icon loading setting' ,icon1 :'ui right floated red mini circular label',tip: '3' }
+            ]
+        };
+
+        // 1. 定义（路由）组件。
+        // 可以从其他文件 import 进来
+        const CMS = { template:
+            '<div style="margin: auto 0;">' +
+                '<div>' +
+                    'CMS' + '{{ $route.params.id }}' +
+                '</div>' +
+            '</div>'
+        }
+        const Home = { template:
+                    '<div style="margin: auto 0;">' +
+                        '<div>' +
+                            '内容' +
+                        '</div>' +
+                    '</div>'
+        }
+
+        const UserProfile = { template:
+            '<div style="margin: auto 0;">' +
+                '<div>' +
+                'UserProfile' +
+                '</div>' +
+            '</div>'
+        }
+
+        const Menu = { template:
+                        `
+        <div class="ui container grid">
+            <div class="three wide column tk-left">
+            <div class="ui teal vertical pointing menu">
+                <a class="active item"><div class="ui teal left pointing label">12</div><i class="user icon"></i>用户管理</a>
+                <a class="item"><div class="ui label">3</div><i class="group icon"></i>角色管理</a>
+                <a class="item"><div class="ui label">6</div><i class="privacy icon"></i>权限管理</a>
+            </div>
+
+            <div class="one wide column tk-left-key tk-key">
+                <div class="ui vertical divider"><</div>
+            </div>
+
+            <router-view></router-view>
+        </div>
+          `
+        }
+
+        // 2. 定义路由
+        // 每个路由应该映射一个组件。 其中"component" 可以是
+        // 通过 Vue.extend() 创建的组件构造器，
+        // 或者，只是一个组件配置对象。
+        // 我们晚点再讨论嵌套路由。
+        const routes = [
+            { path: '/cms/:id', component: CMS },
+            { path: '/datas', component: CMS },
+            { path: '/home', component: Home },
+            { path: '/menu', component: Menu,
+                children: [
+                    {
+                        // 当 /user/:id/profile 匹配成功，
+                        // UserProfile 会被渲染在 User 的 <router-view> 中
+                        path: 'profile',
+                        component: UserProfile
+                    }
+                ]
+            }
+        ]
+
+        // 3. 创建 router 实例，然后传 `routes` 配置
+        // 你还可以传别的配置参数, 不过先这么简单着吧。
+        const router = new VueRouter({
+            routes // （缩写）相当于 routes: routes
+        })
+
+        // 4. 创建和挂载根实例。
+        // 记得要通过 router 配置参数注入路由，
+        // 从而让整个应用都有路由功能
+        const app = new Vue({
+            router,data:head_data
+        }).$mount('#app')
+
+
+        // 现在，应用已经启动了
+
+
+
+
+    </script>
+</body>
+</html>

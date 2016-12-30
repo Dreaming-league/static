@@ -16,11 +16,11 @@
     <div class="ui container tk-top" style="margin: 10px 0;">
         <div class="ui secondary menu">
             <div id="head-menu" style="margin: auto 0;">
-                <div v-for="(index, item) in items" style="display: inline-block;">
-                    <a href="{{ item.href | json  }}" class="{{ item.active | json }} item">
-                        <i class="{{ item.icon0 | json }}"></i>
-                        {{ item.menu | json }}
-                        <div class="{{ item.icon1 | json }}">{{ item.tip | json }}</div>
+                <div v-for="(item,index) in items" style="display: inline-block;">
+                    <a :href="item.href" :class="item.active">
+                        <i :class="item.icon0"></i>
+                        {{ item.menu }}
+                        <div :class="item.icon1">{{ item.tip }}</div>
                     </a>
                 </div>
             </div>
@@ -34,11 +34,11 @@
                     </div>
                     <div class="divider"></div>
                     <div id="head-menu-more">
-                        <div v-for="(index, item) in items" style="width: 100%;">
-                            <a href="{{ item.href }}" class="{{ item.active }} item" style="margin: 5px 10px;line-height: 24px;padding: 5px 0px;">
-                                <i class="{{ item.icon0 }}" style="margin: auto 0;"></i>
+                        <div v-for="item in items" style="width: 100%;">
+                            <a :href="item.href" :class="item.active" style="margin: 5px 10px;line-height: 24px;padding: 5px 0px;">
+                                <i :class="item.icon0" style="margin: auto 0;"></i>
                                 {{ item.menu }}
-                                <div class="{{ item.icon1 }}">{{ item.tip }}</div>
+                                <div :class="item.icon1">{{ item.tip }}</div>
                             </a>
                         </div>
                     </div>
@@ -86,8 +86,8 @@
         <!-- 左边开关结束 -->
 
         <!-- 中间内容开始 style="border:1px solid red;" -->
+        <!--<div class="ui tag label">路径</div>-->
         <div class="twelve wide column tk-content">
-            <!--<div class="ui tag label">路径</div>-->
             <div class="ui segment">
                 <div class="ui small breadcrumb">
                     <a class="section">权限管理</a>
@@ -114,7 +114,6 @@
             </div>
 
             <div class="tkm-user-container">
-                <!--<div class="ui inverted divider"></div>-->
                 <table class="ui selectable striped celled compact blue table">
                     <thead>
                     <tr>
@@ -212,7 +211,6 @@
                     <tfoot>
                     <tr>
                         <th colspan="4">
-                            <!--left arrow／chevron-->
                             <div class="ui tiny left floated borderless pagination menu">
                                 <div class="icon item">
                                     共10页
@@ -244,8 +242,6 @@
                     </tr>
                     </tfoot>
                 </table>
-
-                <!--卡片-->
                 <div class="ui link cards four column grid" style="display: none;">
                     <div class="card">
                         <div class="image">
@@ -259,12 +255,6 @@
                             </div>
                             <div class="description signed">
                                 最可悲的是没有理想，一天天重复着同样的生活.
-                                <!--<div class="ui accordion">-->
-                                <!--<div class="title"><i class="dropdown icon"></i> What is a dog? </div>-->
-                                <!--<div class="content">-->
-                                <!--<p class="transition hidden">最可悲的是没有理想，一天天重复着同样的生活.</p>-->
-                                <!--</div>-->
-                                <!--</div>-->
                             </div>
                         </div>
                         <div class="extra content">
